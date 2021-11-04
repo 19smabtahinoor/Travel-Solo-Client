@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-primary {
+  font-family: 'Poppins', sans-serif;
+  @apply bg-red-500 ring-red-300 text-white focus:ring-4 transition duration-300 rounded-lg hover:bg-red-600 py-2 hover:scale-105 transform;
+}
+
+.input-primary {
+  @apply py-3 px-4 w-full border border-gray-200 rounded-md ring-blue-300 focus:ring-4 transition duration-300 focus:outline-none;
+}
+
+.input-secondary {
+  @apply py-3 px-4 w-full border-b border-gray-400 focus:outline-none bg-transparent text-gray-600 placeholder-red-500;
+}
