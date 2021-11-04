@@ -49,7 +49,7 @@ const ManageBookingsScreen = () => {
                                 swal("Poof! Booking has deleted", {
                                     icon: "success",
                                 });
-                                const restBookings = allBookings.filter((item) => item._id !== id)
+                                const restBookings = allBookings.filter(({ _id }) => _id !== id)
                                 setallBookings(restBookings);
                             }
                         })
@@ -64,16 +64,16 @@ const ManageBookingsScreen = () => {
     const handleApprove = (id) => {
         // update status
         const prevBooking = { ...singleBooking };
-        console.log(prevBooking)
-        prevBooking.status = "Approved"
+        const prevData = prevBooking.data;
+        prevData.status = "Approved"
         axios.put(`https://sm-travel-solo.herokuapp.com/bookings/${id}`, {
-            newData: prevBooking
+            newData: prevData
         }).then(res => {
             if (res.data.modifiedCount > 0) {
                 swal("Approved", {
                     icon: "success",
                 }).then(() => {
-                    setSingleBooking(prevBooking.status = "Approved");
+                    setSingleBooking(prevBooking.data.status = "Approved");
                     setDisabled(true)
                 });
             }
@@ -114,27 +114,27 @@ const ManageBookingsScreen = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {allBookings.map((item) => (
-                                                <tr className="bg-white border-b font-primary text-sm grid grid-cols-1 lg:grid-cols-6 place-items-center" key={item._id}>
+                                                {allBookings.map(({ _id, bookings, data }) => (
+                                                <tr className="bg-white border-b font-primary text-sm grid grid-cols-1 lg:grid-cols-6 place-items-center" key={_id}>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                        <img className="w-48 lg:w-24 rounded-lg" src={item.image} alt={item.title} />
+                                                            <img className="w-48 lg:w-24 rounded-lg" src={bookings.image} alt={bookings.title} />
                                                     </td>
                                                     <td className="text-sm text-gray-500 px-6 py-4 break-all">
-                                                        {item.title}
+                                                            {bookings.title}
                                                     </td>
                                                     <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">
-                                                        {item.name}
+                                                            {data.name}
                                                     </td>
                                                     <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">
-                                                        {item.email}
+                                                            {data.email}
                                                     </td>
                                                     <td className="text-sm px-6 py-4 whitespace-nowrap">
-                                                        <span className={`${item.status === "pending" ? "bg-yellow-500" : "bg-green-600"} text-white px-4 py-1 rounded-full font-primary`}>{item.status}</span>
+                                                            <span className={`${data.status === "pending" ? "bg-yellow-500" : "bg-green-600"} text-white px-4 py-1 rounded-full font-primary`}>{data.status}</span>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap flex flex-col h-24 items-center justify-center">
                                                         <div className="flex items-center justify-center space-x-3">
-                                                            <AiOutlineDelete onClick={() => handleDelete(item._id)} className="cursor-pointer text-2xl text-red-600" />
-                                                            <button disabled={disabled} className="bg-blue-600 px-4 py-2 text-white font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300" onClick={() => handleApprove(item._id)}>{item.status === "Approved" ? "Approved":"Approve"}</button>
+                                                            <AiOutlineDelete onClick={() => handleDelete(_id)} className="cursor-pointer text-2xl text-red-600" />
+                                                                <button disabled={disabled} className="bg-blue-600 px-4 py-2 text-white font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300" onClick={() => handleApprove(_id)}>{data.status === "Approved" ? "Approved":"Approve"}</button>
                                                         </div>
                                                     </td>
                                                 </tr>
