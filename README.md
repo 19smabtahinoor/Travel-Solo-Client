@@ -17,13 +17,12 @@
 
 ## Features
 
-- This website is a tourism website.
-- This website is a full stack website.
-- You can book any tour package from this website
-- You can manage your bookings tour package
-- You can see only your booked package.
-- Admin is able to manage the all user bookings
-- User Authentication, Private Route etc....
+- Travel Solo is a tourism website to book different tourism places.
+- Implemented a cool ui with React JS and Tailwind CSS
+- Using Node JS to create REST API and Implemented to load tourism places data in the home page 
+- Implemented User Authentication with Firebase Auth.
+- Implemented a dashboard where user can manage orders.
+
 
 ## ScreenShot Homepage
 ![sss](https://awesomescreenshot.s3.amazonaws.com/image/2491978/15929104-faedc2e8c86f7f2e2e427f86040917d9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20211031%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20211031T095743Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=e0cc34ee37c4957f907d36f976cbed4410e96f297f418bb8dcc7972d54f40133)
