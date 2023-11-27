@@ -6,7 +6,7 @@ const TourPackageSection = () => {
     const [toursPack, setToursPack] = useState([]);
 
     useEffect(() => {
-        fetch('https://sm-travel-solo.herokuapp.com/tours')
+        fetch('https://travel-solo-server-moa6.vercel.app/tours')
             .then(res => res.json())
             .then(data => setToursPack(data))
     }, [])

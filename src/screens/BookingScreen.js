@@ -9,7 +9,7 @@ const BookingScreen = () => {
 
     //bookings details
     useEffect(() => {
-        fetch(`https://sm-travel-solo.herokuapp.com/tours/${id}`)
+        fetch(`https://travel-solo-server-moa6.vercel.app/tours/${id}`)
             .then(res => res.json())
             .then(data => setData(data))
     }, [id])

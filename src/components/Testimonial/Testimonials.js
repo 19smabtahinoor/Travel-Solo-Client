@@ -14,7 +14,7 @@ const Testimonials = () => {
     const [testimonialData, setTestimonialData] = useState([]);
 
     useEffect(() => {
-        axios.get('https://sm-travel-solo.herokuapp.com/testimonials')
+        axios.get('https://travel-solo-server-moa6.vercel.app/testimonials')
             .then(res => setTestimonialData(res.data))
     }, [])
 

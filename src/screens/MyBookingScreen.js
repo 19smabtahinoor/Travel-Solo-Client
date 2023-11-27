@@ -17,7 +17,7 @@ const MyBookingScreen = () => {
 
 
     useEffect(() => {
-        fetch('https://sm-travel-solo.herokuapp.com/bookings')
+        fetch('https://travel-solo-server-moa6.vercel.app/bookings')
             .then(res => res.json())
             .then(data => setMyBookings(data.filter(item => item.data.email === user.email)))
     }, [user.email])
@@ -41,7 +41,7 @@ const MyBookingScreen = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    axios.delete(`https://sm-travel-solo.herokuapp.com/bookings/${id}`)
+                    axios.delete(`https://travel-solo-server-moa6.vercel.app/bookings/${id}`)
                         .then(res => {
                             if (res.data.deletedCount > 0) {
                                 swal("Poof! Booking has deleted", {

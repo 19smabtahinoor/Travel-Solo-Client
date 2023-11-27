@@ -15,7 +15,7 @@ const BookingForm = ({ bookings, totalBookingCost }) => {
         data['status'] = "pending"
         const newData = { bookings, data }
         console.log(newData);
-        axios.post('https://sm-travel-solo.herokuapp.com/bookings', newData)
+        axios.post('https://travel-solo-server-moa6.vercel.app/bookings', newData)
             .then(response => {
                 if (response.statusText === "OK") {
                     swal("Good job!", "Order has been placed", "success")

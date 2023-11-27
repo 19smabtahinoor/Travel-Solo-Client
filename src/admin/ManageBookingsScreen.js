@@ -13,7 +13,7 @@ const ManageBookingsScreen = () => {
     const [allBookings, setallBookings] = useState([])
     const history = useHistory();
     useEffect(() => {
-        fetch('https://sm-travel-solo.herokuapp.com/bookings')
+        fetch('https://travel-solo-server-moa6.vercel.app/bookings')
             .then(res => res.json())
             .then(data => setallBookings(data))
     }, []);
@@ -43,7 +43,7 @@ const ManageBookingsScreen = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    axios.delete(`https://sm-travel-solo.herokuapp.com/bookings/${id}`)
+                    axios.delete(`https://travel-solo-server-moa6.vercel.app/bookings/${id}`)
                         .then(res => {
                             if (res.data.deletedCount > 0) {
                                 swal("Poof! Booking has deleted", {
@@ -66,7 +66,7 @@ const ManageBookingsScreen = () => {
         const prevBooking = { ...singleBooking };
         const prevData = prevBooking.data;
         prevData.status = "Approved"
-        axios.put(`https://sm-travel-solo.herokuapp.com/bookings/${id}`, {
+        axios.put(`https://travel-solo-server-moa6.vercel.app/bookings/${id}`, {
             newData: prevData
         }).then(res => {
             if (res.data.modifiedCount > 0) {

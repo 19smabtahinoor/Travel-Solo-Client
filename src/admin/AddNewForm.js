@@ -6,7 +6,7 @@ import swal from 'sweetalert';
 const AddNewForm = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        axios.post('https://sm-travel-solo.herokuapp.com/tours', data)
+        axios.post('https://travel-solo-server-moa6.vercel.app/tours', data)
             .then((response) => {
                 if (response.statusText === "OK") {
                     swal("Good job!", "New Tour Package Added", "success")
